@@ -27,6 +27,55 @@ Client.prototype = {
         }
       );
     });
+  },
+  lookup: function(record_id){
+    var that = this;
+    return new Promise(function(resolve,reject){
+      if (!that.accessKey) throw 'Flowroute accessKey not defined';
+      if (!that.secretKey) throw 'Flowroute secretKey not defined';
+      request.get(
+        'https://api.flowroute.com/v2/messages/'+
+          encodeURIComponent(record_id),
+        {
+          auth: { user: that.accessKey, pass: that.secretKey },
+          json: true
+        },
+        function(err,resp,body){
+          if (err) reject(err);
+          else resolve(body.data ? body.data: body);
+        }
+      );
+    });
+  },
+  search: function(start,end,limit,offset){
+    var that = this;
+    limit = limit || that.limit;
+    offset = offset || 0;
+    return new Promise(function(resolve,reject){
+      if (!that.accessKey) throw 'Flowroute accessKey not defined';
+      if (!that.secretKey) throw 'Flowroute secretKey not defined';
+      request.get(
+        'https://api.flowroute.com/v2/messages?'+
+          qs.stringify({
+            start_date: that.parseDate(start),
+            end_date: that.parseDate(end),
+            limit: limit,
+            offset: offset
+          }),
+        {
+          auth: { user: that.accessKey, pass: that.secretKey },
+          json: true
+        },
+        function(err,resp,body){
+          if (err) reject(err);
+          else resolve(body.data ? body.data: body);
+        }
+      );
+    });
+  },
+  parseDate: function(date){
+    if (date instanceof Date) return date.toISOString();
+    return date;
   }
 };
 
