@@ -5,6 +5,7 @@ var Client = function(accessKey,secretKey){
   if (!(this instanceof Client)) return new Client(accessKey,secretKey);
   this.accessKey = accessKey || Client.accessKey;
   this.secretKey = secretKey || Client.secretKey;
+  this.limit = Client.limit;
 }
 
 Client.prototype = {
@@ -31,5 +32,6 @@ Client.prototype = {
 
 Client.accessKey = process.env.FLOWROUTE_KEY || null;
 Client.secretKey = process.env.FLOWROUTE_SECRET || null;
+Client.limit = 250;
 
 module.exports = Client;
