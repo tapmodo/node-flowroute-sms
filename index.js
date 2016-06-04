@@ -10,6 +10,8 @@ Client.prototype = {
   send: function(to,from,body){
     var that = this;
     return new Promise(function(resolve,reject){
+      if (!that.accessKey) throw 'Flowroute accessKey not defined';
+      if (!that.secretKey) throw 'Flowroute secretKey not defined';
       request.post(
         'https://api.flowroute.com/v2/messages',
         {
