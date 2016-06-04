@@ -1,4 +1,5 @@
 const request = require('request');
+const qs = require('querystring');
 
 var Client = function(accessKey,secretKey){
   if (!(this instanceof Client)) return new Client(accessKey,secretKey);
