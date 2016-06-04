@@ -23,7 +23,7 @@ Client.prototype = {
         },
         function(err,resp,body){
           if (err) reject(err);
-          else resolve(body);
+          else resolve(body.data ? body.data: body);
         }
       );
     });
