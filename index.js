@@ -1,6 +1,7 @@
 const request = require('request');
 
 var Client = function(accessKey,secretKey){
+  if (!(this instanceof Client)) return new Client(accessKey,secretKey);
   this.accessKey = accessKey || Client.accessKey;
   this.secretKey = secretKey || Client.secretKey;
 }
