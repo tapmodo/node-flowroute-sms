@@ -1,7 +1,7 @@
 {
   "name": "flowroute-sms",
   "version": "1.0.0",
-  "description": "Flowroute Messaging v2 API Client",
+  "description": "Send SMS messages using Flowroute's v2 Messaging API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

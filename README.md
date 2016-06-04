@@ -1,5 +1,7 @@
 # flowroute-sms
 
+Send SMS messages using Flowroute's v2 Messaging API.
+
 ### Features
 
   * Allows sending SMS messages with Flowroute and Nodejs
