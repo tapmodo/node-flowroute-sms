@@ -3,8 +3,8 @@
 ### Features
 
   * Allows sending SMS messages with Flowroute and Nodejs
-  * Super-lightweight compared to scaffolded Flowroute SDK
-  * Supports npm as standard installable module
+  * Super-lightweight compared to scaffolded Flowroute SDK for Nodejs
+  * Supported as standard installable npm module
 
 ### Installation
 
@@ -27,8 +27,10 @@ without specifying any values (see following section).
 
 ### Create client
 
-    var Client = require('flowroute-sms');
-    var client = new Client(accessKey,secretKey);
+```
+var FlowrouteSMS = require('flowroute-sms');
+var client = new FlowrouteSMS(accessKey,secretKey);
+```
 
 ### Send message
 
@@ -38,7 +40,7 @@ var to   = '12135559090';
 
 client.send(from, to, 'Mrs Miller wants the entire house repainted.')
   .then(function(result){ console.log(result); })
-  .catch(function(err){ console.error('Error!',err); });
+  .catch(function(err){ console.error(err); });
 ```
 
 Note that the `send` method returns an ES6 Promise.
