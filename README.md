@@ -47,7 +47,7 @@ var SMS = require('flowroute-sms')(accessKey,secretKey);
 var from = '18185551234';
 var to   = '12135559090';
 
-client.send(from, to, 'Hello World!')
+client.send(to, from, 'Hello World!')
 .then(function(result){
     console.log('Sent message',result.id);
 });
